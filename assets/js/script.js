@@ -100,8 +100,14 @@ var taskButtonHandler = function(event) {
   console.log(event.target);
 
   if (event.target.matches(".delete-btn")) {
-    console.log("you clicked the delete button")
+    // get the elements task id
+    var taskId = event.target.getAttribute('task-data-id');
+    deleteTask(taskId)
   }
+}
+
+var deleteTask = function(taskId) {
+  console.log(taskId)
 }
 
 formEl.addEventListener("submit", taskFormHandler);
