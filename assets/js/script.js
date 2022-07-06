@@ -101,14 +101,15 @@ var taskButtonHandler = function(event) {
 
   if (event.target.matches(".delete-btn")) {
     // get the elements task id
-    var taskId = event.target.getAttribute('task-data-id');
+    var taskId = event.target.getAttribute('data-task-id');
     deleteTask(taskId)
   }
 }
 
 var deleteTask = function(taskId) {
-  console.log(taskId)
-}
+  var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+  taskSelected.remove()
+} 
 
 formEl.addEventListener("submit", taskFormHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
