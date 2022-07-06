@@ -97,11 +97,17 @@ var createTaskActions = function(taskId) {
 }
 
 var taskButtonHandler = function(event) {
-  console.log(event.target);
+  // get target element from event
+  var targetEl = event.target;
 
-  if (event.target.matches(".delete-btn")) {
-    // get the elements task id
-    var taskId = event.target.getAttribute('data-task-id');
+  // edit button was clicked
+  if (targetEl.matches(".edit-btn")) {
+    var taskId = targetEl.getAttribute('data-task-id');
+    editTask(taskId);
+  }
+  // delete button was clicked
+  else if (targetEl.matches(".delete-btn")) {
+    var taskId = targetEl.getAttribute('data-task-id')
     deleteTask(taskId)
   }
 }
@@ -110,6 +116,13 @@ var deleteTask = function(taskId) {
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
   taskSelected.remove()
 } 
+
+var editTask = function(taskId) {
+  console.log("editing task #" + taskId)
+
+  // get task list item element
+  var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+}
 
 formEl.addEventListener("submit", taskFormHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
