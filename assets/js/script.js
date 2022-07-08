@@ -118,10 +118,16 @@ var deleteTask = function(taskId) {
 } 
 
 var editTask = function(taskId) {
-  console.log("editing task #" + taskId)
 
   // get task list item element
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+
+  // get content from task name and type  
+  var taskName = taskSelected.querySelector("h3.task-name").textContent;
+  console.log(taskName)
+
+  var taskType = taskSelected.querySelector("span.task-type").textContent;
+  console.log(taskType)
 }
 
 formEl.addEventListener("submit", taskFormHandler);
